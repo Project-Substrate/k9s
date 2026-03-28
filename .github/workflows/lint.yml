@@ -6,7 +6,7 @@ on:
 
 jobs:
   golangci:
-    runs-on: ubuntu-latest
+    runs-on: magnon-enterprise-runners
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6.0.1
