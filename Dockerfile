@@ -1,3 +1,4 @@
+# Copyright (c) 2024-2026 Magnon Compute Corporation. All Rights Reserved.
 # -----------------------------------------------------------------------------
 # The base image for building the k9s binary
 FROM --platform=$BUILDPLATFORM golang:1.25.5-alpine3.21 AS build
@@ -26,5 +27,11 @@ RUN apk --no-cache add --update ca-certificates \
   && curl -f -L https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/${TARGET_ARCH}/kubectl -o /usr/local/bin/kubectl \
   && chmod +x /usr/local/bin/kubectl \
   && apk del --purge deps
+# Run as non-root user
+RUN addgroup --system --gid 65534 nonroot && \
+    adduser --system --uid 65534 --gid 65534 --no-create-home nonroot
+USER nonroot
+HEALTHCHECK --interval=30s --timeout=10s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:${PORT:-8080}/health/live || exit 1
 
 ENTRYPOINT [ "/bin/k9s" ]

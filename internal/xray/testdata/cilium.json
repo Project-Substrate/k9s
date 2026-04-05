@@ -170,7 +170,7 @@
                 "livenessProbe": {
                     "failureThreshold": 3,
                     "httpGet": {
-                        "path": "/healthz",
+                        "path": "/health/live",
                         "port": 9234,
                         "scheme": "HTTP"
                     },
