@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: K9s Test
+
+permissions:
+  contents: read
 
 on:
   workflow_dispatch:
@@ -11,9 +15,14 @@ on:
   pull_request:
     branches:
       - master
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 60
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6.0.1

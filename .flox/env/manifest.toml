@@ -1,0 +1,14 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
+version = 1
+
+[install]
+go_1_22.pkg-path = "go_1_22"
+git.pkg-path = "git"
+jq.pkg-path = "jq"
+
+[vars]
+GOPATH = "$HOME/go"
+GOBIN = "$HOME/go/bin"
+
+[options]
+systems = ["aarch64-darwin", "x86_64-darwin", "aarch64-linux", "x86_64-linux"]

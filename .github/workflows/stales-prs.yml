@@ -1,4 +1,8 @@
+# Copyright (c) Magnon Compute Corporation. All rights reserved.
 name: Closeout Stale PRs
+permissions:
+  contents: read
+
 on:
   schedule:
     - cron: "0 2 * * *"
@@ -6,6 +10,7 @@ on:
 jobs:
   close-issues:
     runs-on: magnon-enterprise-runners
+    timeout-minutes: 30
     permissions:
       issues: write
       pull-requests: write

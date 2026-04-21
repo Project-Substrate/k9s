@@ -1,3 +1,5 @@
+// Copyright (c) 2024-2026 Magnon Compute Corporation. All Rights Reserved.
+
 package client
 
 import "k8s.io/apimachinery/pkg/util/sets"
