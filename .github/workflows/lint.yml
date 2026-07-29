@@ -14,7 +14,7 @@ concurrency:
 
 jobs:
   golangci:
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 30
     steps:
       - name: Checkout Code

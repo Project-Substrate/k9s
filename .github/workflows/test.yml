@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   build:
-    runs-on: magnon-enterprise-runners
+    runs-on: magnon-enterprise-runners-substrate
     timeout-minutes: 60
     steps:
       - name: Checkout Code
